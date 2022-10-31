@@ -30,12 +30,31 @@ RSpec.describe "customer show page" do
   it 'on customer show page, I see a list of customer items, including name, price and name of supermarket it belongs to ' do 
 
     visit "customers/#{@customer1.id}"
-    save_and_open_page
+    
     expect(page).to have_content("Name: DMT")
     expect(page).to have_content("Price: 150")
     expect(page).to have_content("Market: Illegal goods wholesale")
     expect(page).to_not have_content("#{@item3.name} ")
     expect(page).to_not have_content("#{@market2.name}")
+  end
+
+  describe "US 2" do 
+    describe "item form " do 
+      it "I see a form to add items to a customer on their show page" do 
+
+        visit "customers/#{@customer1.id}"
+
+        fill_in "Item Search", with: "Potato"
+
+        click_button("Submit")
+
+        expect(current_path).to eq("/customers/#{@customer1.id}")
+        expect(page).to have_content("Potato")
+        expect(page).to have_content("#{@item3.price}")
+
+      end
+    end
+
   end
 
 

@@ -12,7 +12,7 @@ Items: <%= @customer.items.each do |item| %>
 
 <p> Add More Items Form </p>
 
-<%= form_with url: "/customers", method: :get, local: true do |form| %>
+<%= form_with url: "/customers/#{@customer.id}/customer_items", method: :post, local: true do |form| %>
 
   <%= form.label :name, "Item Search" %>
   <%= form.text_field :name %>
