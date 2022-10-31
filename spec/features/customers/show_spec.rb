@@ -24,17 +24,16 @@ RSpec.describe "customer show page" do
 
     visit "/customers/#{@customer1.id}"
 
-    expect(page).to have_content("Bert")
-
+    expect(page).to have_content("Tom")
   end
 
   it 'on customer show page, I see a list of customer items, including name, price and name of supermarket it belongs to ' do 
 
     visit "customers/#{@customer1.id}"
-
-    expect(page).to have_content("Items: DMT ")
-    expect(page).to have_content("Price: 150 ")
-    expect(page).to have_content("Market: 123 Silk Road ")
+    save_and_open_page
+    expect(page).to have_content("Name: DMT")
+    expect(page).to have_content("Price: 150")
+    expect(page).to have_content("Market: Illegal goods wholesale")
     expect(page).to_not have_content("#{@item3.name} ")
     expect(page).to_not have_content("#{@market2.name}")
   end

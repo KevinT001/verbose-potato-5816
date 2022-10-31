@@ -3,8 +3,10 @@
 <p>Name: <%= @customer.name %></p>
 
 Items: <%= @customer.items.each do |item| %> 
-  <p><%= item.name %> </p>
-  <p> <% = item.price%> </p>
+  <p>Name: <%= item.name %> </p>
+  <p>Price: <%= item.price%> </p>
+    Market: <%= item.supermarket.name%>
+  <% end %>
 
 
 
@@ -12,8 +14,8 @@ Items: <%= @customer.items.each do |item| %>
 
 <%= form_with url: "/customers", method: :get, local: true do |form| %>
 
-  <%= form.label :name, "Name" %>
+  <%= form.label :name, "Item Search" %>
   <%= form.text_field :name %>
 
-  <%= form.submit, "Submit"%>
+  <%= form.submit "Submit"%>
 <% end %>
