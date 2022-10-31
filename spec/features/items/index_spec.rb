@@ -24,7 +24,7 @@ RSpec.describe "Items Index spec" do
    belongs to. And the count of customers that bought that item' do 
 
    visit '/items'
-
+  save_and_open_page
    expect(page).to have_content("#{@item1.name}")
    expect(page).to have_content("#{@item2.name}")
    expect(page).to have_content("#{@item3.name}")
@@ -32,8 +32,6 @@ RSpec.describe "Items Index spec" do
    expect(page).to have_content("#{@item2.price}")
    expect(page).to have_content("#{@item3.price}")
    expect(page).to have_content("#{@item4.price}")
-
-   
 
   end
 end

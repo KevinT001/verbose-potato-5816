@@ -1,0 +1,9 @@
+<h1> Item's Index Page </h1>
+
+
+<% @items.each do |item|%>
+<p>Name: <%= item.name %></p>
+<p>Price:<%= item.price%> </p>
+<p>Market:<%= item.supermarket.name%> </p>
+<p>Customer Purchase Count: <%= item.cust_count %></p>
+<% end %>
