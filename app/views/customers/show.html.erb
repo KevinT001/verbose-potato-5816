@@ -1,0 +1,19 @@
+<h1> Customer Show Page </h1>
+
+<p>Name: <%= @customer.name %></p>
+
+Items: <%= @customer.items.each do |item| %> 
+  <p><%= item.name %> </p>
+  <p> <% = item.price%> </p>
+
+
+
+<p> Add More Items Form </p>
+
+<%= form_with url: "/customers", method: :get, local: true do |form| %>
+
+  <%= form.label :name, "Name" %>
+  <%= form.text_field :name %>
+
+  <%= form.submit, "Submit"%>
+<% end %>

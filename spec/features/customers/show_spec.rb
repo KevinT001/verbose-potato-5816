@@ -14,13 +14,8 @@ RSpec.describe "customer show page" do
     @item3 = @market2.items.create!(name: "Potato", price: 100)
     @item4 = @market2.items.create!(name: "Mayo", price: 200)
 
-    @cust_item1 = CustomerItem.create!(customer_id: @customer1.id, item_id: @item1.id)
-    @cust_item2 = CustomerItem.create!(customer_id: @customer1.id, item_id: @item2.id)
-
-
-
-
-
+    CustomerItem.create!(customer_id: @customer1.id, item_id: @item1.id)
+    CustomerItem.create!(customer_id: @customer1.id, item_id: @item2.id)
     
 
   end
@@ -37,7 +32,11 @@ RSpec.describe "customer show page" do
 
     visit "customers/#{@customer1.id}"
 
-    expect(page).to have_content("")
+    expect(page).to have_content("Items: DMT ")
+    expect(page).to have_content("Price: 150 ")
+    expect(page).to have_content("Market: 123 Silk Road ")
+    expect(page).to_not have_content("#{@item3.name} ")
+    expect(page).to_not have_content("#{@market2.name}")
   end
 
 
